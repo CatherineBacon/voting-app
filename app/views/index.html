@@ -25,6 +25,12 @@
     </div>
 
     <div class="container">
+      {{#if polls}}
+      <ul>
+      {{#each polls}}
+      <li>{{name}}</li>
+      {{/each}}
+      </ul>
       <p>Click on a poll to vote</p>
       <!--  <p>You have clicked the button <span id="click-nbr"></span> times.</p> -->
       <br />
@@ -32,6 +38,9 @@
         <button type="submit" class="btn btn-add">CLICK ME!</button>
         <button class="btn btn-delete">RESET</button>
       </div>
+      {{else}}
+        <p>No polls found!</p>
+      {{/if}}
     </div>
 
     <script type="text/javascript" src="common/ajax-functions.js"></script>

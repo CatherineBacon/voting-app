@@ -16,6 +16,10 @@ mongoose.Promise = global.Promise;
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
+app.engine('html', require('hbs').__express);
+app.set('views', './app/views');
+app.set('view engine', 'html');
+
 
 app.use(session({
 	secret: 'secretClementine',
