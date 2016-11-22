@@ -60,5 +60,6 @@ module.exports = function (app, passport) {
     app.route('/newpoll')
         .get(function (req, res) {
             res.sendFile(path + '/public/newpoll.html');
-        });
+        })
+        .post(pollHandler.addPoll);
 };

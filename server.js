@@ -5,6 +5,7 @@ var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
+var bodyParser = require('body-parser'); 
 
 var app = express();
 require('dotenv').load();
@@ -20,7 +21,6 @@ app.engine('html', require('hbs').__express);
 app.set('views', './app/views');
 app.set('view engine', 'html');
 
-
 app.use(session({
 	secret: 'secretClementine',
 	resave: false,
@@ -29,6 +29,8 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(bodyParser.urlencoded({ extend: true }));
 
 routes(app, passport);
 

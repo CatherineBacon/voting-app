@@ -27,20 +27,24 @@
     <div class="container">
       <!--  <p>You have clicked the button <span id="click-nbr"></span> times.</p> -->
       <br />
-      <form>
+      <form action="/newpoll" method="post">
         <div>
           <label for="name">Question:</label>
-          <input type="text" id="name" />
+          <input type="text" id="name" name="question" />
         </div>
         <div>
-          <label for="options">Responses:</label>
+          <label for="options">Option:</label>
+          <input type="text" name="option1" />
+        </div>
+        <div>
+          <label for="options">Option:</label>
           <input type="text" />
         </div>
+        <div class="btn-container">
+          <button type="submit" class="btn btn-create">CREATE POLL!</button>
+          <button type="reset" class="btn btn-delete">RESET</button>
+        </div>
       </form>
-      <div class="btn-container">
-        <button type="submit" class="btn btn-add">CLICK ME!</button>
-        <button class="btn btn-delete">RESET</button>
-      </div>
     </div>
 
     <script type="text/javascript" src="common/ajax-functions.js"></script>
