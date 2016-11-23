@@ -12,14 +12,20 @@ function pollHandler () {
     }
 
     this.addPoll = function (req, res) {
-        console.log(req.body);
+        var options = Object.keys(req.body)
+            .filter( function(key) {
+                return key.startsWith('option');
+            })
+            .map( function(key) {
+                return {
+                    name: req.body[key],
+                    count: 0
+                };
+            });
         Polls.create({
             name: req.body.question,
             author: "",
-            options: [{
-                name: req.body.option1,
-                count: 0
-            }]
+            options: options
         }, function(err, poll) {
             if (err) return res.sendStatus(500);
             res.redirect('/');

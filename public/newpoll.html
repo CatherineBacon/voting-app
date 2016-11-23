@@ -32,23 +32,26 @@
           <label for="name">Question:</label>
           <input type="text" id="name" name="question" />
         </div>
-        <div>
-          <label for="options">Option:</label>
-          <input type="text" name="option1" />
-        </div>
-        <div>
-          <label for="options">Option:</label>
-          <input type="text" />
+        <div id="options-fields">
+          <div>
+            <label for="option1">Option:</label>
+            <input type="text" name="option1" />
+          </div>
+          <div>
+            <label for="option2">Option:</label>
+            <input type="text" name="option2" />
+          </div>
         </div>
         <div class="btn-container">
           <button type="submit" class="btn btn-create">CREATE POLL!</button>
+          <button type="button" class="btn btn-add">ADD OPTIONS</button>
           <button type="reset" class="btn btn-delete">RESET</button>
         </div>
       </form>
     </div>
 
     <script type="text/javascript" src="common/ajax-functions.js"></script>
-    <script type="text/javascript" src="controllers/clickController.client.js"></script>
+    <script type="text/javascript" src="controllers/pollController.client.js"></script>
     <script type="text/javascript" src="controllers/userController.client.js"></script>
   </body>
 
