@@ -33,7 +33,10 @@ function pollHandler () {
     }
 
     this.viewPoll = function(req, res) {
-        res.send(req.params);
+        Polls.findById(req.params.id, function(err, poll) {
+            if (err) return res.sendStatus(404);
+            res.send(poll);
+        });
     }
     
 }
