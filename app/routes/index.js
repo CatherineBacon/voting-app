@@ -62,4 +62,7 @@ module.exports = function (app, passport) {
             res.sendFile(path + '/public/newpoll.html');
         })
         .post(pollHandler.addPoll);
+
+    app.route('/poll/:id')
+        .get(pollHandler.viewPoll);
 };

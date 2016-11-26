@@ -31,6 +31,10 @@ function pollHandler () {
             res.redirect('/');
         });
     }
+
+    this.viewPoll = function(req, res) {
+        res.send(req.params);
+    }
     
 }
 
