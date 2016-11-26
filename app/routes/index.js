@@ -50,12 +50,13 @@ module.exports = function (app, passport) {
 	    successRedirect: '/',
 	    failureRedirect: '/login'
 	}));
+    
     // change the route below and also add route for /newpoll
-
     app.route('/api/:id/clicks')
 	.get(isLoggedIn, clickHandler.getClicks)
 	.post(isLoggedIn, clickHandler.addClick)
 	.delete(isLoggedIn, clickHandler.resetClicks);
+    
     // add isLoggedIn below, to post and get as above
     app.route('/newpoll')
         .get(function (req, res) {
