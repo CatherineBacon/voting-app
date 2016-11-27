@@ -28,14 +28,14 @@ function pollHandler () {
             options: options
         }, function(err, poll) {
             if (err) return res.sendStatus(500);
-            res.redirect('/');
+            res.redirect(`/poll/${poll._id}`); //this should be updated to send to the poll page
         });
     }
 
     this.viewPoll = function(req, res) {
         Polls.findById(req.params.id, function(err, poll) {
             if (err) return res.sendStatus(404);
-            res.send(poll);
+            res.render('poll', {poll: poll} );
         });
     }
     
