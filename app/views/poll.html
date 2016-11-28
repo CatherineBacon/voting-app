@@ -23,17 +23,20 @@
       <br />
       <p class="title-text">{{poll.name}}</p>
     </div>
-
+<!-- need to be able to vote for each option -->
     <div class="container">
       <ul>
       {{#each poll.options}}
-      <li>{{name}}</li>
+      <li>
+        <a class="btn btn-vote" href="/poll/{{../poll._id}}/vote/{{_id}}">VOTE</a>
+        <span class="nbr">{{count}}</span> : {{name}}
+      </li>
       {{/each}}
       </ul>
-      <!--  <p>You have clicked the button <span id="click-nbr"></span> times.</p> -->
       <br />
       <div class="btn-container">
         <button type="submit" class="btn btn-add">CLICK ME!</button>
+        <!--add option button should only be available for authorised users -->
         <button class="btn btn-delete">RESET</button>
       </div>
     </div>

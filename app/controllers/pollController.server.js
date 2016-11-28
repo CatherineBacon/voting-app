@@ -38,6 +38,18 @@ function pollHandler () {
             res.render('poll', {poll: poll} );
         });
     }
+
+    this.vote = function(req, res) {
+        Polls.update( {
+            _id: req.params.pollId,
+            "options._id": req.params.optionId
+        }, {
+            $inc: {"options.$.count": 1}
+        }, function(err, raw) {
+            if (err) return res.sendStatus(500);
+            res.redirect(`/poll/${req.params.pollId}`);
+        });
+    }
     
 }
 
