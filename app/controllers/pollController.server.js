@@ -50,7 +50,24 @@ function pollHandler () {
             res.redirect(`/poll/${req.params.pollId}`);
         });
     }
-    
+
+    this.addOption = function(req, res) {
+        var newOption = {
+            name: req.body.optionName,
+            count: 1
+        };
+        
+        Polls.update( {
+            _id: req.params.id
+        }, {
+            $push: {
+                options: newOption
+            }
+        }, function(err, raw) {
+            if (err) return res.sendStatus(500);
+            res.redirect(`/poll/${req.params.id}`);
+        });
+    }
 }
 
 module.exports = pollHandler;

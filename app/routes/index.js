@@ -65,8 +65,10 @@ module.exports = function (app, passport) {
         .post(pollHandler.addPoll);
 
     app.route('/poll/:id')
-        .get(pollHandler.viewPoll);
+        .get(pollHandler.viewPoll)
+        .post(pollHandler.addOption);
 
     app.route('/poll/:pollId/vote/:optionId')
         .get(pollHandler.vote);
+
 };

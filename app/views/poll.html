@@ -36,9 +36,19 @@
       <br />
       <div class="btn-container">
         <button type="submit" class="btn btn-add">CLICK ME!</button>
-        <!--add option button should only be available for authorised users -->
         <button class="btn btn-delete">RESET</button>
       </div>
+      <br />
+      <!--add option button should only be available for authorised users -->
+      <form class="add-option-container" action="/poll/{{poll._id}}" method="post">
+        <div>
+          <label for="optionName">Add option:</label>
+          <input type="text" id="option-name" name="optionName" />
+        </div>
+        <div>
+          <button type="submit" class="btn btn-add-option">ADD!</button>
+        </div>
+      </form>
     </div>
 
     <script type="text/javascript" src="common/ajax-functions.js"></script>
