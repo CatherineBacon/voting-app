@@ -77,10 +77,12 @@ function pollHandler () {
         var list = [];
         Polls.find( { author: userId } , function(err, data) {
             if (err) return res.sendStatus(500);
-            res.send(data);
+            res.render('userpolls', {userpolls: data});
+            //res.send(data);
         } );
 
     }
 }
+
 
 module.exports = pollHandler;

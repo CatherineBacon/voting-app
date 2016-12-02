@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Polls Polls Polls</title>
+
+    <link href="/public/css/main.css" rel="stylesheet" type="text/css">
+  </head>
+  <header>
+    <p>Welcome, <span id="display-name"></span>!</p>
+    <a class="menu" href="/profile">Your profile</a>
+    <p>|</p>
+    <a class="menu" href="/yourpolls">Your polls</a>
+    <a class="menu" href="/newpoll">New poll</a>
+    <p>|</p>
+    <a class="menu" href="/logout">Logout</a>
+  </header>
+
+  <body>
+    <div class="container">
+      <img src="/public/img/clementine_150.png" />
+      <br />
+      <p class="title-text">My polls</p>
+    </div>
+
+    <div class="container">
+      {{#if userpolls}}
+      <ul>
+      {{#each userpolls}}
+      <li><a href="/poll/{{_id}}">{{name}}</a></li>
+      {{/each}}
+      </ul>
+      <p>Click on a poll to vote</p>
+      <!--  <p>You have clicked the button <span id="click-nbr"></span> times.</p> -->
+      <br />
+      <div class="btn-container">
+        <button type="submit" class="btn btn-add">CLICK ME!</button>
+        <button class="btn btn-delete">RESET</button>
+      </div>
+      {{else}}
+        <p>No polls found!</p>
+      {{/if}}
+    </div>
+
+    <script type="text/javascript" src="common/ajax-functions.js"></script>
+    <script type="text/javascript" src="controllers/clickController.client.js"></script>
+    <script type="text/javascript" src="controllers/userController.client.js"></script>
+  </body>
+
+</html>
