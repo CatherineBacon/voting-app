@@ -1,6 +1,7 @@
 'use strict';
 
 var Polls = require('../models/polls.js');
+var Users = require('../models/users.js');
 
 function pollHandler () {
 
@@ -11,6 +12,7 @@ function pollHandler () {
         });
     }
 
+    // can only add poll if logged in
     this.addPoll = function (req, res) {
         var options = Object.keys(req.body)
             .filter( function(key) {
@@ -22,13 +24,14 @@ function pollHandler () {
                     count: 0
                 };
             });
+        
         Polls.create({
             name: req.body.question,
-            author: "",
+            author: req.user.github.id,
             options: options
         }, function(err, poll) {
             if (err) return res.sendStatus(500);
-            res.redirect(`/poll/${poll._id}`); //this should be updated to send to the poll page
+            res.redirect(`/poll/${poll._id}`); 
         });
     }
 
@@ -67,6 +70,16 @@ function pollHandler () {
             if (err) return res.sendStatus(500);
             res.redirect(`/poll/${req.params.id}`);
         });
+    }
+
+    this.viewYourPolls = function(req, res) {
+        var userId = req.user.github.id;
+        var list = [];
+        Polls.find( { author: userId } , function(err, data) {
+            if (err) return res.sendStatus(500);
+            res.send(data);
+        } );
+
     }
 }
 
