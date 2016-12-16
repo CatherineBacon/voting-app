@@ -22,16 +22,15 @@
       {{#if polls}}
       <ul>
       {{#each polls}}
-      <li><a href="/poll/{{_id}}">{{name}}</a></li>
+      <li><a href="/poll/{{_id}}">{{name}}</a>
+        {{#if isOwn}}
+          <a type="delete" class="btn btn-delete delete-poll" href="/poll/{{_id}}/delete">Delete</a>
+        {{/if}}
+      </li>
       {{/each}}
       </ul>
       <p>Click on a poll to vote</p>
-      <!--  <p>You have clicked the button <span id="click-nbr"></span> times.</p> -->
       <br />
-      <div class="btn-container">
-        <button type="submit" class="btn btn-add">CLICK ME!</button>
-        <button class="btn btn-delete">RESET</button>
-      </div>
       {{else}}
         <p>No polls found!</p>
       {{/if}}
