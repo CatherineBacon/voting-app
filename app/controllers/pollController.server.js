@@ -10,7 +10,7 @@ function pollHandler () {
       if (err) return res.sendStatus(500);
       res.render('index', {
         polls: polls.map(function(poll){
-          if(req.user.github.id == poll.author) {
+          if(req.user && req.user.github.id == poll.author) {
             poll.isOwn = true;
           } else {
             poll.isOwn = false;
@@ -58,7 +58,10 @@ function pollHandler () {
   this.viewPoll = function(req, res) {
     Polls.findById(req.params.id, function(err, poll) {
       if (err) return res.sendStatus(404);
-      res.render('poll', {poll: poll} );
+      res.render('poll', {
+        poll: poll,
+        isLoggedIn: req.user ? true : false
+      } );
     });
   }
 

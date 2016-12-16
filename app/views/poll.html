@@ -29,6 +29,7 @@
       </ul>
       <br />
       <!--add option button should only be available for authorised users -->
+      {{#if isLoggedIn}}
       <form class="add-option-container" action="/poll/{{poll._id}}" method="post">
         <div>
           <label for="optionName">Add option:</label>
@@ -38,6 +39,7 @@
           <button type="submit" class="btn btn-add-option">ADD!</button>
         </div>
       </form>
+      {{/if}}
     </div>
 
     <script type="text/javascript" src="common/ajax-functions.js"></script>
