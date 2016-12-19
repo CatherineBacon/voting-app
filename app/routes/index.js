@@ -59,9 +59,7 @@ module.exports = function (app, passport) {
   
   // add isLoggedIn below, to post and get as above
   app.route('/newpoll')
-    .get(isLoggedIn, function (req, res) {
-      res.sendFile(path + '/public/newpoll.html');
-    })
+    .get(isLoggedIn, pollHandler.newPoll)
     .post(isLoggedIn, pollHandler.addPoll);
 
   //should only be able to add option if logged in

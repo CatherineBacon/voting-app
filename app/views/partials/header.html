@@ -1,4 +1,5 @@
-  <header>
+<header>
+  {{#if isLoggedIn}}
     <p>Welcome, <span id="display-name"></span>!</p>
     <a class="menu" href="/">Home</a>
     <p>|</p>
@@ -9,4 +10,10 @@
     <a class="menu" href="/newpoll">New poll</a>
     <p>|</p>
     <a class="menu" href="/logout">Logout</a>
-  </header>
+  {{else}}
+    <p>Welcome!</p>
+    <a class="menu" href="/">Home</a>
+    <p>|</p>
+    <a class="menu" href="/login">Login</a>
+  {{/if}}
+</header>

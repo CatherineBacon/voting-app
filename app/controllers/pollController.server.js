@@ -16,9 +16,15 @@ function pollHandler () {
             poll.isOwn = false;
           };
           return poll;
-        })
+        }),
+        isLoggedIn: !!req.user
       });
     });
+  }
+
+  // Page view for new poll form
+  this.newPoll = function (req, res) {
+    res.render('newpoll', {isLoggedIn: !!req.user});
   }
 
   // can only add poll if logged in
@@ -100,7 +106,7 @@ function pollHandler () {
     var list = [];
     Polls.find( { author: userId } , function(err, data) {
       if (err) return res.sendStatus(500);
-      res.render('userpolls', {userpolls: data});
+      res.render('userpolls', {userpolls: data, isLoggedIn: !!req.user});
       //res.send(data);
     } );
 
