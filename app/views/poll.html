@@ -6,6 +6,7 @@
     <title>Polls Polls Polls</title>
 
     <link href="/public/css/main.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
 <!-- This will need updating so shows differently for authorised and unauthorised users -->
 
@@ -39,12 +40,15 @@
           <button type="submit" class="btn btn-add-option">ADD!</button>
         </div>
       </form>
+      <a class="btn twitter" href="https://twitter.com/intent/tweet?text={{twittermessage}}" >
+        <i class="fa fa-twitter"> SHARE!</i>
+      </a>
       {{/if}}
     </div>
 
-    <script type="text/javascript" src="common/ajax-functions.js"></script>
-    <script type="text/javascript" src="controllers/clickController.client.js"></script>
-    <script type="text/javascript" src="controllers/userController.client.js"></script>
+    <script type="text/javascript" src="/common/ajax-functions.js"></script>
+<!--    <script type="text/javascript" src="/controllers/clickController.client.js"></script> -->
+    <script type="text/javascript" src="/controllers/userController.client.js"></script>
   </body>
 
 </html>

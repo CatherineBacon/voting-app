@@ -64,10 +64,12 @@ function pollHandler () {
   this.viewPoll = function(req, res) {
     Polls.findById(req.params.id, function(err, poll) {
       if (err) return res.sendStatus(404);
+      var url = req.protocol + "://" + req.hostname + req.originalUrl;
       res.render('poll', {
         poll: poll,
-        isLoggedIn: req.user ? true : false
-      } );
+        isLoggedIn: req.user ? true : false,
+        twittermessage: `Vote for my poll, ${poll.name}: ${url} `
+      });
     });
   }
 
