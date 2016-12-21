@@ -1,19 +1,20 @@
-<header>
-  {{#if isLoggedIn}}
-    <p>Welcome, <span id="display-name"></span>!</p>
-    <a class="menu" href="/">Home</a>
-    <p>|</p>
-    <a class="menu" href="/profile">Your profile</a>
-    <p>|</p>
-    <a class="menu" href="/yourpolls">Your polls</a>
-    <p>|</p>
-    <a class="menu" href="/newpoll">New poll</a>
-    <p>|</p>
-    <a class="menu" href="/logout">Logout</a>
-  {{else}}
-    <p>Welcome!</p>
-    <a class="menu" href="/">Home</a>
-    <p>|</p>
-    <a class="menu" href="/login">Login</a>
-  {{/if}}
-</header>
+<nav>
+  <div class="nav-wrapper">
+    {{#if isLoggedIn}}
+    <a href="#" class="brand-logo">Welcome, <span id="display-name"></span>!</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile">Your profile</a></li>
+      <li><a href="/yourpolls">Your polls</a></li>
+      <li><a href="/newpoll">New poll</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+    {{else}}
+    <a href="#" class="brand-logo">Welcome!</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+    {{/if}}
+  </div>
+</nav>
