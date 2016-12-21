@@ -43,6 +43,7 @@ function pollHandler () {
     Polls.create({
       name: req.body.question,
       author: req.user.github.id,
+      votes: 0,
       options: options
     }, function(err, poll) {
       if (err) return res.sendStatus(500);
@@ -78,7 +79,7 @@ function pollHandler () {
       _id: req.params.pollId,
       "options._id": req.params.optionId
     }, {
-      $inc: {"options.$.count": 1}
+      $inc: {"options.$.count": 1, "votes": 1},
     }, function(err, raw) {
       if (err) return res.sendStatus(500);
       res.redirect(`/poll/${req.params.pollId}`);
@@ -96,6 +97,9 @@ function pollHandler () {
     }, {
       $push: {
         options: newOption
+      },
+      $inc: {
+        "votes": 1
       }
     }, function(err, raw) {
       if (err) return res.sendStatus(500);

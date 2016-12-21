@@ -4,12 +4,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Poll = new Schema ({
+  name: String,
+  author: String,
+  votes: Number,
+  options: [{
     name: String,
-    author: String,
-    options: [{
-        name: String,
-        count: Number
-    }]
+    count: Number
+  }]
 });
 
 module.exports = mongoose.model('Poll', Poll);
