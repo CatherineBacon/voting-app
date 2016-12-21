@@ -66,8 +66,16 @@ function pollHandler () {
     Polls.findById(req.params.id, function(err, poll) {
       if (err) return res.sendStatus(404);
       var url = req.protocol + "://" + req.hostname + req.originalUrl;
+      var optionNames = poll.options.map(function(option) {
+        return `"${option.name}"`;
+      });
+      var data = poll.options.map(function(option) {
+        return option.count;
+      });
       res.render('poll', {
         poll: poll,
+        optionNames: optionNames,
+        data: data,
         isLoggedIn: req.user ? true : false,
         twittermessage: `Vote for my poll, ${poll.name}: ${url} `
       });

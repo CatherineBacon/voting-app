@@ -46,6 +46,28 @@
       {{/if}}
     </div>
 
+<canvas id="myChart" width="400" height="400"></canvas>
+<script type="text/javascript" src="/common/Chart.min.js"></script>
+<script type="text/javascript" src="/common/randomColor.js"></script>
+<script>
+  var pollOptions = [{{{optionNames}}}];
+  var pollData = [{{{data}}}];
+  console.log(randomColor({count: pollData.length}));
+  var ctx = document.getElementById("myChart");
+  var myChart = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+  labels: pollOptions,
+        datasets: [{
+            label: '# of Votes',
+            data: pollData,
+            backgroundColor: randomColor({luminosity: "light", count: pollData.length})
+        }]
+    },
+
+});
+</script>
+
     <script type="text/javascript" src="/common/ajax-functions.js"></script>
 <!--    <script type="text/javascript" src="/controllers/clickController.client.js"></script> -->
     <script type="text/javascript" src="/controllers/userController.client.js"></script>
