@@ -4,49 +4,62 @@
 
   <head>
     <title>Polls Polls Polls</title>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link href="/public/css/main.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/public/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
-<!-- This will need updating so shows differently for authorised and unauthorised users -->
+
+  <body>
 
   {{> header isLoggedIn=isLoggedIn}}
 
-  <body>
     <div class="container">
-      <img src="/public/img/clementine_150.png" />
-      <br />
-      <p class="title-text">{{poll.name}} ({{poll.votes}} votes)</p>
-    </div>
-<!-- need to be able to vote for each option -->
-    <div class="container">
-      <ul>
-      {{#each poll.options}}
-      <li>
-        <a class="btn btn-vote" href="/poll/{{../poll._id}}/vote/{{_id}}">VOTE</a>
-        <span class="nbr">{{count}}</span> : {{name}}
-      </li>
-      {{/each}}
-      </ul>
-      <br />
-      <!--add option button should only be available for authorised users -->
-      {{#if isLoggedIn}}
-      <form class="add-option-container" action="/poll/{{poll._id}}" method="post">
-        <div>
-          <label for="optionName">Add option:</label>
-          <input type="text" id="option-name" name="optionName" />
+
+      <h1 class="center-align">{{poll.name}}</h1>
+      <h4 class="center-align">({{poll.votes}} votes)</h4>
+      <br>
+
+      <div class="row">
+        <div class="col m6">
+        <ul>
+          {{#each poll.options}}
+          <li>
+            <a class="btn btn-vote" href="/poll/{{../poll._id}}/vote/{{_id}}">VOTE</a>
+            <span class="nbr">{{count}}</span> : {{name}}
+          </li>
+          <p></p>
+          {{/each}}
+        </ul>
+        <br>
+        {{#if isLoggedIn}}
+        <form class="add-option-container" action="/poll/{{poll._id}}" method="post">
+          <div class="input-field">
+            <label for="optionName">Add option:</label>
+            <input type="text" id="option-name" name="optionName" />
+          </div>
+          <br>
+          <div>
+            <button type="submit" class="btn btn-add-option">ADD!</button>
+          </div>
+        </form>
+        <br>
+        <a class="btn twitter" href="https://twitter.com/intent/tweet?text={{twittermessage}}" >
+          <i class="fa fa-twitter"> SHARE!</i>
+        </a>
+        {{/if}}
         </div>
-        <div>
-          <button type="submit" class="btn btn-add-option">ADD!</button>
+        <div class="col m6">
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
-      </form>
-      <a class="btn twitter" href="https://twitter.com/intent/tweet?text={{twittermessage}}" >
-        <i class="fa fa-twitter"> SHARE!</i>
-      </a>
-      {{/if}}
+      </div>
     </div>
 
-<canvas id="myChart" width="400" height="400"></canvas>
+
 <script type="text/javascript" src="/common/Chart.min.js"></script>
 <script type="text/javascript" src="/common/randomColor.js"></script>
 <script>
@@ -68,8 +81,14 @@
 });
 </script>
 
+    {{> footer}}
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
     <script type="text/javascript" src="/common/ajax-functions.js"></script>
-<!--    <script type="text/javascript" src="/controllers/clickController.client.js"></script> -->
+    <script type="text/javascript" src="/controllers/clickController.client.js"></script>
     <script type="text/javascript" src="/controllers/userController.client.js"></script>
   </body>
 

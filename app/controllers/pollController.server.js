@@ -95,6 +95,10 @@ function pollHandler () {
   }
 
   this.addOption = function(req, res) {
+    if (req.body.optionName == "") {
+      return res.redirect(`/poll/${req.params.id}`);
+    };
+    
     var newOption = {
       name: req.body.optionName,
       count: 1

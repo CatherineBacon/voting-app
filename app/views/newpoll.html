@@ -4,47 +4,58 @@
 
   <head>
     <title>Polls Polls Polls</title>
-
-    <link href="/public/css/main.css" rel="stylesheet" type="text/css">
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
-  {{> header isLoggedIn=isLoggedIn}}
-
   <body>
-    <div class="container">
-      <img src="/public/img/clementine_150.png" />
-      <br />
-      <p class="title-text">Create a new poll</p>
-    </div>
+
+    {{> header isLoggedIn=isLoggedIn}}
 
     <div class="container">
+
+      <h1 class="center-align">Create a new poll</h1>
+
       <form action="/newpoll" method="post">
-        <div>
-          <label for="name">Question:</label>
+
+        <div class="input-field">
           <input type="text" id="name" name="question" />
+          <label for="name">Question:</label>
         </div>
+
         <div id="options-fields">
-          <div id="option1">
-            <label for="option1">Option: </label>
+          <div id="option1" class="input-field">
             <input type="text" name="option1" />
+            <label for="option1">Option: </label>
           </div>
-          <div id="option2">
-            <label for="option2">Option: </label>
+          <div id="option2" class="input-field">
             <input type="text" name="option2" />
+            <label for="option2">Option: </label>
           </div>
         </div>
         <div class="btn-container">
           <button type="submit" class="btn btn-create">CREATE POLL!</button>
           <button type="button" class="btn btn-add">ADD OPTIONS</button>
-          <button type="button" class="btn btn-remove">REMOVE OPTIONS</button>
+          <button type="button" class="btn btn-remove">REMOVE LAST OPTION</button>
           <button type="reset" class="btn btn-delete">RESET</button>
         </div>
       </form>
     </div>
 
+    {{> footer}}
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
     <script type="text/javascript" src="common/ajax-functions.js"></script>
-    <script type="text/javascript" src="controllers/pollController.client.js"></script>
+    <script type="text/javascript" src="controllers/clickController.client.js"></script>
     <script type="text/javascript" src="controllers/userController.client.js"></script>
+    <script type="text/javascript" src="controllers/pollController.client.js"></script>
   </body>
 
 </html>

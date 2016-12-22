@@ -12,6 +12,7 @@
 
     var newDiv = document.createElement('div');
     newDiv.id = "option" + nextOptionNumber;
+    newDiv.className = "input-field";
         
     var newLabel = document.createElement('label');
     newLabel.htmlFor = "option" + nextOptionNumber;
@@ -21,9 +22,9 @@
     newInput.type = "text";
     newInput.name = "option" + nextOptionNumber;
         
-    newDiv.appendChild(newLabel);
     newDiv.appendChild(newInput);
-                
+    newDiv.appendChild(newLabel);
+    
     container.appendChild(newDiv);
 
     nextOptionNumber += 1;
