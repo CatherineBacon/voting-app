@@ -21,6 +21,8 @@
     var newInput = document.createElement('input');
     newInput.type = "text";
     newInput.name = "option" + nextOptionNumber;
+    newInput.setAttribute("required", "");
+    newInput.setAttribute("aria-required", "true");
         
     newDiv.appendChild(newInput);
     newDiv.appendChild(newLabel);
