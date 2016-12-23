@@ -22,7 +22,7 @@ body {
 	margin: 0;
 	padding: 0;
 }
-
+bod
 
 header {
 	color: #00BCD4;
@@ -38,17 +38,6 @@ p {
 .container p {
 	text-align: center;
 	padding: 0;
-}
-
-/****** Footer Styling ******/
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-container {
-    flex: 1 0 auto;
 }
 
 /****** Header Styling ******/
