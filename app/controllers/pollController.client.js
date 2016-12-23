@@ -23,6 +23,7 @@
     newInput.name = "option" + nextOptionNumber;
     newInput.setAttribute("required", "");
     newInput.setAttribute("aria-required", "true");
+    newInput.className = "validate";
         
     newDiv.appendChild(newInput);
     newDiv.appendChild(newLabel);
